@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/reven/melvin_ws/Homework1_WS/src
+CMAKE_SOURCE_DIR = /home/reven/ME_ROS/Homework1_WS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/reven/melvin_ws/Homework1_WS/build
+CMAKE_BINARY_DIR = /home/reven/ME_ROS/Homework1_WS/build
 
 # Utility rule file for beginner_tutorials_genlisp.
 
@@ -63,10 +63,10 @@ beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/build: beginner_tut
 .PHONY : beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/build
 
 beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/clean:
-	cd /home/reven/melvin_ws/Homework1_WS/build/beginner_tutorials && $(CMAKE_COMMAND) -P CMakeFiles/beginner_tutorials_genlisp.dir/cmake_clean.cmake
+	cd /home/reven/ME_ROS/Homework1_WS/build/beginner_tutorials && $(CMAKE_COMMAND) -P CMakeFiles/beginner_tutorials_genlisp.dir/cmake_clean.cmake
 .PHONY : beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/clean
 
 beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/depend:
-	cd /home/reven/melvin_ws/Homework1_WS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/reven/melvin_ws/Homework1_WS/src /home/reven/melvin_ws/Homework1_WS/src/beginner_tutorials /home/reven/melvin_ws/Homework1_WS/build /home/reven/melvin_ws/Homework1_WS/build/beginner_tutorials /home/reven/melvin_ws/Homework1_WS/build/beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/reven/ME_ROS/Homework1_WS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/reven/ME_ROS/Homework1_WS/src /home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials /home/reven/ME_ROS/Homework1_WS/build /home/reven/ME_ROS/Homework1_WS/build/beginner_tutorials /home/reven/ME_ROS/Homework1_WS/build/beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : beginner_tutorials/CMakeFiles/beginner_tutorials_genlisp.dir/depend
 

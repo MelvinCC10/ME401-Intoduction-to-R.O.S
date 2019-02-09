@@ -1,2 +1,2 @@
 beginner_tutorials
--DCATKIN_DEVEL_PREFIX=/home/reven/melvin_ws/Homework1_WS/devel -DCMAKE_INSTALL_PREFIX=/home/reven/melvin_ws/Homework1_WS/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/reven/ME_ROS/Homework1_WS/devel -DCMAKE_INSTALL_PREFIX=/home/reven/ME_ROS/Homework1_WS/install -G Unix Makefiles

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/reven/melvin_ws/Homework1_WS/src
+CMAKE_SOURCE_DIR = /home/reven/ME_ROS/Homework1_WS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/reven/melvin_ws/Homework1_WS/build
+CMAKE_BINARY_DIR = /home/reven/ME_ROS/Homework1_WS/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,9 +135,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reven/melvin_ws/Homework1_WS/build/CMakeFiles /home/reven/melvin_ws/Homework1_WS/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reven/ME_ROS/Homework1_WS/build/CMakeFiles /home/reven/ME_ROS/Homework1_WS/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/reven/melvin_ws/Homework1_WS/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/reven/ME_ROS/Homework1_WS/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
