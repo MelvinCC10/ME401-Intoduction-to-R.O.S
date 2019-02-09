@@ -117,7 +117,18 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/reven/ME_ROS/Homework1_WS/build/gtest/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3_msgs/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_navigation/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3_simulations/turtlebot3_simulations/cmake_install.cmake")
   include("/home/reven/ME_ROS/Homework1_WS/build/beginner_tutorials/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_example/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3_simulations/turtlebot3_fake/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3_simulations/turtlebot3_gazebo/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_slam/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_teleop/cmake_install.cmake")
+  include("/home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_description/cmake_install.cmake")
 
 endif()
 
