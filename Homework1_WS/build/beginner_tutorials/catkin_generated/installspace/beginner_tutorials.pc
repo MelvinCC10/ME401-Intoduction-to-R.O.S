@@ -1,0 +1,8 @@
+prefix=/home/reven/melvin_ws/Homework1_WS/install
+
+Name: beginner_tutorials
+Description: Description of beginner_tutorials
+Version: 0.0.0
+Cflags: -I/home/reven/melvin_ws/Homework1_WS/install/include
+Libs: -L/home/reven/melvin_ws/Homework1_WS/install/lib 
+Requires: message_runtime
