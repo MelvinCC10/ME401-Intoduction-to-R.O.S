@@ -33,7 +33,12 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials/msg" TYPE FILE FILES "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Num.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials/msg" TYPE FILE FILES
+    "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Num.msg"
+    "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Linear.msg"
+    "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Angular.msg"
+    "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Position.msg"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")

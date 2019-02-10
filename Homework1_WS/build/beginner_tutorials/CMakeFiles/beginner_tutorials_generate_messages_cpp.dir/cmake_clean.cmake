@@ -1,6 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/beginner_tutorials_generate_messages_cpp"
+  "/home/reven/ME_ROS/Homework1_WS/devel/include/beginner_tutorials/Linear.h"
+  "/home/reven/ME_ROS/Homework1_WS/devel/include/beginner_tutorials/Angular.h"
   "/home/reven/ME_ROS/Homework1_WS/devel/include/beginner_tutorials/Num.h"
+  "/home/reven/ME_ROS/Homework1_WS/devel/include/beginner_tutorials/Position.h"
   "/home/reven/ME_ROS/Homework1_WS/devel/include/beginner_tutorials/AddTwoInts.h"
 )
 

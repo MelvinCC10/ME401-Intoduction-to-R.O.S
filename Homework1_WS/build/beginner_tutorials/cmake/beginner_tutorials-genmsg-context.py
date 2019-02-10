@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Num.msg"
+messages_str = "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Num.msg;/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Linear.msg;/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Angular.msg;/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/msg/Position.msg"
 services_str = "/home/reven/ME_ROS/Homework1_WS/src/beginner_tutorials/srv/AddTwoInts.srv"
 pkg_name = "beginner_tutorials"
 dependencies_str = "std_msgs"
