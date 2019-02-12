@@ -25,7 +25,8 @@ if __name__=="__main__":
     rospy.init_node('Move')
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
     turtlebot3_model = rospy.get_param("model", "burger")
-
+    rate = rospy.Rate(10)
+    
     status = 0
     target_linear_vel   = 0.0
     target_angular_vel  = 0.0

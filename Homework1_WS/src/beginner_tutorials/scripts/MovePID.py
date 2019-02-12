@@ -22,7 +22,7 @@ Turtle Bot will move automatically
 e = """
 Communications Failed
 """
-kp = .04
+kp = .035
 des = 0
 error = 0
 coin = 0
@@ -39,20 +39,24 @@ if __name__=="__main__":
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
     turtlebot3_model = rospy.get_param("model", "burger")
     rospy.Subscriber('/eul', Position, callback_ori, (position))
-    time.sleep(2)
+    time.sleep(1)
     rate = rospy.Rate(10)
 
     try:
 
         print msg
 
+        twist.linear.x = 0.5; twist.linear.y = 0.0; twist.linear.z = 0.0
+        twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
+        pub.publish(twist)
+        time.sleep(2)
 
         while not rospy.is_shutdown():
 
 
             error = des - position.angular.yaw
             cmd = kp*error
-            twist.linear.x = 1.5
+            twist.linear.x = 0.5
             twist.angular.z = cmd
             pub.publish(twist)
 
@@ -60,10 +64,10 @@ if __name__=="__main__":
             print(coin)
 
             #Step input
-            if coin == 100:
+            if coin == 50:
                 des = 90
                 print(des)
-            if coin == 200:
+            if coin == 100:
                 des = 0
                 print(des)
 
