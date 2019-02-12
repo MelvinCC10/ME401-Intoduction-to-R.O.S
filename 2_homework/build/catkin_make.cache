@@ -1,2 +1,0 @@
-beginner_tutorials
--DCATKIN_DEVEL_PREFIX=/home/reven/ME_ROS/2_homework/devel -DCMAKE_INSTALL_PREFIX=/home/reven/ME_ROS/2_homework/install -G Unix Makefiles

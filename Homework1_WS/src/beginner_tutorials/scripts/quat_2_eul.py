@@ -1,10 +1,31 @@
 #!/usr/bin/env python
 import rospy, math
+import os
+clear = lambda : os.system('clear')
+
 from nav_msgs.msg import Odometry
 # this package is used for the actual quat to eul transformation
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
 # this imports the custom message format
 from beginner_tutorials.msg import Position
+
+msg0 = """
+quat to eul is running
+"""
+msg1 = """
+quat to eul is running.
+"""
+msg2 = """
+quat to eul is running..
+"""
+msg3 = """
+quat to eul is running...
+"""
+msg4 = """
+quat to eul is running....
+"""
+
+coin = 0
 
 # create the globals old_yaw and num_wraps and instantiate with values of 0
 old_yaw = 0
@@ -61,6 +82,9 @@ def get_rotation (msg, pub):
 if __name__== '__main__':
 	try:
 
+
+
+
 		# create the node
 		rospy.init_node('quat_to_eul')
 		# create the publisher
@@ -73,8 +97,31 @@ if __name__== '__main__':
 		r = rospy.Rate(100) #Hz
 
 		while not rospy.is_shutdown():
+
 			# use the sleep function of the rate object to sleep the proper
 			# duration according to the rate set using the Rate() function
+
+			if coin == 0:
+				clear()
+				print msg0
+			if coin == 50:
+				clear()
+				print msg1
+			if coin == 100:
+				clear()
+				print msg2
+			if coin == 150:
+				clear()
+				print msg3
+			if coin == 200:
+				clear()
+				print msg4
+
+			coin = coin + 1
+			if coin >250:
+				coin =0
+
+
 			r.sleep()
 
 	except rospy.ROSInterruptException:

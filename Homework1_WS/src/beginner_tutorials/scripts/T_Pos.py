@@ -19,8 +19,8 @@ if __name__ == '__main__':
 	try:
 
 		time.sleep(1)
-		position = Position()
 
+		position = Position()
 		rospy.Subscriber('/eul', Position, callback_ori, (position))
 		rospy.Subscriber('/odom', Odometry, callback_pos, (position))
 

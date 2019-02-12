@@ -2,6 +2,7 @@
 import rospy
 import time
 from geometry_msgs.msg import Twist
+from beginner_tutorials.msg import Position
 import sys, select, os
 
 if os.name == 'nt': # if windows
@@ -9,6 +10,10 @@ if os.name == 'nt': # if windows
 else:
   import tty, termios
 
+def callback_ori(data, data_out):
+	data_out.angular.roll  = data.angular.roll
+	data_out.angular.pitch = data.angular.pitch
+	data_out.angular.yaw   = data.angular.yaw
 
 msg = """
 Turtle Bot will move automatically
@@ -17,44 +22,57 @@ Turtle Bot will move automatically
 e = """
 Communications Failed
 """
+kp = .04
+des = 0
+error = 0
+coin = 0
 
 if __name__=="__main__":
+
+    position = Position()
+    twist = Twist()
+
     if os.name != 'nt':
         settings = termios.tcgetattr(sys.stdin)
 
     rospy.init_node('Move')
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
     turtlebot3_model = rospy.get_param("model", "burger")
-
-    status = 0
-    target_linear_vel   = 0.0
-    target_angular_vel  = 0.0
-    control_linear_vel  = 0.0
-    control_angular_vel = 0.0
+    rospy.Subscriber('/eul', Position, callback_ori, (position))
     time.sleep(2)
-
+    rate = rospy.Rate(10)
 
     try:
 
         print msg
 
-        twist = Twist()
-        twist.linear.x = 1.5; twist.linear.y = 0.0; twist.linear.z = 0.0
-        twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
-        pub.publish(twist)
-        time.sleep(5)
 
-        twist = Twist()
-        twist.linear.x = 1.5; twist.linear.y = 0.0; twist.linear.z = 0.0
-        twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.15
-        pub.publish(twist)
-        time.sleep(2)
+        while not rospy.is_shutdown():
 
-        twist = Twist()
-        twist.linear.x = 1.5; twist.linear.y = 0.0; twist.linear.z = 0.0
-        twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
-        pub.publish(twist)
-        time.sleep(5)
+
+            error = des - position.angular.yaw
+            cmd = kp*error
+            twist.linear.x = 1.5
+            twist.angular.z = cmd
+            pub.publish(twist)
+
+            coin = coin + 1
+            print(coin)
+
+            #Step input
+            if coin == 100:
+                des = 90
+                print(des)
+            if coin == 200:
+                des = 0
+                print(des)
+
+            rate.sleep()
+
+
+
+
+
 
     except:
 
