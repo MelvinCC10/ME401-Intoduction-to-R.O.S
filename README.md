@@ -1,6 +1,8 @@
 # ME401-Intoduction-to-R.O.S
 
-This Branch has homework 1 & 2 completed
+#### Each branch on this repository is a different homework assignmnt  
+
+This Branch Contains homework 1 & 2
 
 # ME 401/5501–Robotics and Unmanned Systems HW_1  
 ### DUE January 29th
