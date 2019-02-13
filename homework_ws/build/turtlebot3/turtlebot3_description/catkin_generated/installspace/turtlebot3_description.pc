@@ -1,0 +1,8 @@
+prefix=/home/reven/me_401/homework_ws/install
+
+Name: turtlebot3_description
+Description: Description of turtlebot3_description
+Version: 1.2.0
+Cflags: 
+Libs: -L/home/reven/me_401/homework_ws/install/lib 
+Requires: urdf xacro
