@@ -27,7 +27,7 @@ if __name__ == '__main__':
 		# create a node, the name is arbitrary
 		rospy.init_node('PositionNode', anonymous=True)
 
-		rate = rospy.Rate(10) # 100Hz update rate
+		rate = rospy.Rate(100) # 100Hz update rate
 
 		time.sleep(1) # pause for 1 second
 
