@@ -4,6 +4,7 @@ import time
 import math
 from geometry_msgs.msg import Twist
 from beginner_tutorials.msg import Position
+from nav_msgs.msg import Odometry
 import sys, select, os
 
 if os.name == 'nt': # if windows
@@ -21,11 +22,6 @@ def callback_ori(data, data_out):
 	data_out.angular.pitch = data.angular.pitch
 	data_out.angular.yaw   = data.angular.yaw
 
-def check(value,wp):
-    if (wp - tol) <= value <= (wp + tol) and round(value,2)==value:
-        return True
-    return False
-
 msg = """
 Turtle Bot will move automatically
 WayPoint
@@ -41,6 +37,7 @@ low_limt = -.5
 high_limit = .5
 coin = 0
 end = False
+tol = .2
 
 waypoints =[[0,0], [0,1], [2,2], [3, -3]]
 
@@ -67,36 +64,50 @@ if __name__=="__main__":
 
         print msg
 
-        twist.linear.x = 0.5; twist.linear.y = 0.0; twist.linear.z = 0.0
+        twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
         pub.publish(twist)
         time.sleep(2)
 
+
         #set waypoint to first way WayPoint
-        wp = waypoints[0]
+        wp = waypoints[coin]
+
 
         while not rospy.is_shutdown():
 
+            print wp
+            print "1"
 
             # check current pose
             x = position.linear.x
             y = position.linear.y
+            print "2"
 
             # if not withen a spec range of waypoint
-            if not check(x,wp[0]) and check(y,wp[1]):
+            if not ((wp[0] - tol) <= x <= (wp[0] + tol)) or not ((wp[1] - tol) <= y <= (wp[1] + tol)):
                 #change heading twords WayPoint
-                des = atan2(wp[1]-y,wp[0]-x)
-                twist.linear.x = .2
+                des = math.atan2((wp[1]-y),(wp[0]-x)) * (180/3.14)
+                twist.linear.x = 0
             else:
-                if end = False
+                if end == False:
+
                     coin = coin +1
-                    if not waypoints[coin+1]:
+                    print coin
+                    wp = waypoints[coin]
+                    if not waypoints[coin]:
                         twist.linear.x = 0
                         end = True
                         break
-                    wp = waypoints[coin + 1]
+
 
             error = des - position.angular.yaw
+            print error
+
+
+            if 1 >= error:
+                twist.linear.x = .2
+
             cmd = kp*error
 
             if cmd > high_limit:
@@ -104,7 +115,7 @@ if __name__=="__main__":
             if cmd < low_limt:
                 cdm = low_limt
 
-            twist.linear.x = 0.5
+
             twist.angular.z = cmd
             pub.publish(twist)
             rate.sleep()
