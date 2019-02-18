@@ -7,6 +7,7 @@ from beginner_tutorials.msg import Position
 from nav_msgs.msg import Odometry
 import sys, select, os
 
+
 if os.name == 'nt': # if windows
   import msvcrt
 else:
@@ -88,7 +89,7 @@ if __name__=="__main__":
             if not ((wp[0] - tol) <= x <= (wp[0] + tol)) or not ((wp[1] - tol) <= y <= (wp[1] + tol)):
                 #change heading twords WayPoint
                 des = math.atan2((wp[1]-y),(wp[0]-x)) * (180/3.14)
-                twist.linear.x = 0
+                #twist.linear.x = 0
             else:
                 if end == False:
 
