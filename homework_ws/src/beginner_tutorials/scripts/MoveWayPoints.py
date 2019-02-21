@@ -106,6 +106,10 @@ if __name__=="__main__":
             setx.append(wpm[i][0])
             sety.append(wpm[i][1])
 
+        print "x"
+        print setx
+        print "y"
+        print sety
 
         plt.plot(setx, sety)
         plt.grid()
