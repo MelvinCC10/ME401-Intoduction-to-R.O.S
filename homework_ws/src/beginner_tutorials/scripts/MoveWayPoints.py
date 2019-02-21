@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 import rospy
+import numpy
+import dubins
+import matplotlib
+import matplotlib.pyplot as plt
 import time
 import math
 from geometry_msgs.msg import Twist
 from beginner_tutorials.msg import Position
 from nav_msgs.msg import Odometry
 import sys, select, os
-
-
 if os.name == 'nt': # if windows
   import msvcrt
 else:
@@ -23,6 +25,8 @@ def callback_ori(data, data_out):
 	data_out.angular.pitch = data.angular.pitch
 	data_out.angular.yaw   = data.angular.yaw
 
+
+
 msg = """
 Turtle Bot will move automatically
 WayPoint
@@ -31,16 +35,17 @@ WayPoint
 e = """
 Communications Failed
 """
-kp = .035
+kp = .02
 des = 0
 error = 0
-low_limt = -.5
-high_limit = .5
+low_limt = -.800000
+high_limit = .800000
 coin = 0
 end = False
-tol = .2
+tol = .1
 
-waypoints =[[0,0], [0,1], [2,2], [3, -3]]
+
+#waypoints =[[0,0], [0,1], [2,2], [3, -3]]
 
 
 if __name__=="__main__":
@@ -65,6 +70,49 @@ if __name__=="__main__":
 
         print msg
 
+
+        waypoints = [[0,0, 0], [0,1, 0], [2,2, 90], [3, -3,-90]]
+        turning_radius = .3
+        step_size = 0.5
+        wpm = []
+        # for each item in waypoints list
+        for i in range(len(waypoints)):
+            #Set current point to current iteration index ie. iteration 0 use index 0 waypoints
+            q0 = waypoints[i]
+            #if next point to index (current iteration + 1) is True
+            try:
+                q1 = waypoints[i+1]
+            except:
+                break
+                # next point  = index (current iteration + 1)
+            #else
+                #break
+            #set q1, q2
+            #find path from current point to next point
+            path = dubins.shortest_path(q0, q1, turning_radius)
+            configurations, _ = path.sample_many(step_size)
+            # add all points to end of master list
+            for i in range(len(configurations)):
+                wpm.append(configurations[i])
+            print configurations
+            print len(configurations)
+
+        setx = []
+        sety = []
+        for i in range(len(wpm)):
+            setx.append(wpm[i][0])
+            sety.append(wpm[i][1])
+
+
+        plt.plot(setx, sety)
+        plt.grid()
+        plt.show()
+
+
+
+
+
+
         twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
         pub.publish(twist)
@@ -72,12 +120,14 @@ if __name__=="__main__":
 
 
         #set waypoint to first way WayPoint
-        wp = waypoints[coin]
+        wp = wpm[coin]
+        print wpm
 
 
         while not rospy.is_shutdown():
 
-            print wp
+
+
             print "1"
 
             # check current pose
@@ -95,8 +145,8 @@ if __name__=="__main__":
 
                     coin = coin +1
                     print coin
-                    wp = waypoints[coin]
-                    if not waypoints[coin]:
+                    wp = wpm[coin]
+                    if not wpm[coin]:
                         twist.linear.x = 0
                         end = True
                         break
@@ -106,8 +156,8 @@ if __name__=="__main__":
             print error
 
 
-            if 1 >= error:
-                twist.linear.x = .2
+            #if 1 >= error:
+            twist.linear.x = .2
 
             cmd = kp*error
 
