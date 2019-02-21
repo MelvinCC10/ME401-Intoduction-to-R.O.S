@@ -43,6 +43,9 @@ high_limit = .800000
 coin = 0
 end = False
 tol = .1
+num_wraps = 0
+threshold = 30
+olddes = 0
 
 
 #waypoints =[[0,0], [0,1], [2,2], [3, -3]]
@@ -128,18 +131,28 @@ if __name__=="__main__":
 
 
 
-            print "1"
 
             # check current pose
             x = position.linear.x
             y = position.linear.y
-            print "2"
+
 
             # if not withen a spec range of waypoint
             if not ((wp[0] - tol) <= x <= (wp[0] + tol)) or not ((wp[1] - tol) <= y <= (wp[1] + tol)):
                 #change heading twords WayPoint
                 des = math.atan2((wp[1]-y),(wp[0]-x)) * (180/3.14)
-                #twist.linear.x = 0
+                print des
+
+                if olddes < -threshold and des > threshold: # from -pi to pi (increasing negative)
+            		num_wraps = num_wraps - 1
+            	elif olddes > threshold and des < -threshold:
+            		num_wraps = num_wraps + 1
+
+                olddes = des
+                des = des + 360 * num_wraps
+
+
+
             else:
                 if end == False:
 
@@ -153,7 +166,7 @@ if __name__=="__main__":
 
 
             error = des - position.angular.yaw
-            print error
+
 
 
             #if 1 >= error:
