@@ -58,7 +58,7 @@ def findShortPath(bounds,start,goal,obs):
 
     x= True
     while x == True:
-        current[3] = 1 #marking current as visted
+
         templist = []#keep distence values of nodes// resets ever time we move to a new node
 
         nib = [(currentIndex+bounds),(currentIndex-bounds), (currentIndex+1),(currentIndex-1),(currentIndex+bounds+1),(currentIndex+bounds-1),(currentIndex-bounds+1),(currentIndex-bounds-1)]
@@ -85,7 +85,7 @@ def findShortPath(bounds,start,goal,obs):
             nib.remove((currentIndex+1))
             nib.remove((currentIndex+bounds))
             nib.remove((currentIndex+bounds-1))
-        elif currentIndex % bounds == 0 and currentIndex - bounds <0:
+        elif currentIndex % bounds == 0 and currentIndex - bounds <=0:
             nib.remove((currentIndex+bounds+1))
             nib.remove((currentIndex-bounds+1))
             nib.remove((currentIndex+1))
@@ -112,23 +112,25 @@ def findShortPath(bounds,start,goal,obs):
         nibpass = []
         print nib
 
-        for i in range(len(nib)):
-            try:
-                print nodeKeeper[nib[i]]
-                nibpass.append(nib[i])
-            except:
-                print "not valid"
-        print nibpass
+        if current[3] == 1:
+            for j in range(len(nodeKeeper)):
+                if nodeKeeper[j+1][3] == 0:
+                    current = nodeKeeper[j+1]
+                    currentIndex = nodeIndex((current[0]+1,current[1]+1),bounds)
+                    smallIndex = currentIndex
+
+        current[3] = 1 #marking current as visted
 
 
 
 
-        for i in range((bounds*bounds)):
-            if nodeKeeper[i+1][3] == 0:#if unvisted
-                if (checkDis(nodeKeeper[i+1],current)+current[2]) < (nodeKeeper[i+1][2]) or nodeKeeper[i+1][2] == 0:
-                    nodeKeeper[i+1][2] = checkDis(nodeKeeper[i+1],current) + current[2]
-                    nodeKeeper[i+1][4] =currentIndex
-                templist.append([(i+1),nodeKeeper[i+1][2]])
+
+        for i in nib:#range((bounds*bounds)):
+            if nodeKeeper[i][3] == 0:#if unvisted
+                if (checkDis(nodeKeeper[i],current)+current[2]) < (nodeKeeper[i][2]) or nodeKeeper[i][2] == 0:
+                    nodeKeeper[i][2] = checkDis(nodeKeeper[i],current) + current[2]
+                    nodeKeeper[i][4] =currentIndex
+                templist.append([(i),nodeKeeper[i][2]])
 
         print "--------------------------------------------------------"
         print templist
@@ -156,7 +158,10 @@ def findShortPath(bounds,start,goal,obs):
         print pathIndex
         path.append(pathIndex)
         pathIndex = nodeKeeper[pathIndex][4]
-    print nodeKeeper
+    path.append(pathIndex)
+    path.reverse()
+    print "pathIndex"
+    print path
 
 
 
@@ -195,5 +200,5 @@ def dDijkstra(Start,goal,bounds,obst):
 
 test = True
 if test == True:
-    createNodes(3)
-    findShortPath(3,[0,0],[2,2],'none')
+
+    findShortPath(5,[0,0],[3,4],'none')
