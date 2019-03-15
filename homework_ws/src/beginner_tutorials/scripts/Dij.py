@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import math
+import matplotlib.pyplot as plt
 
 # This function will generate a dubins curve that passes through a given set of
 # waypoints and return a list of points for the dubin curve.
@@ -22,15 +23,14 @@ def checkDis(point1,point2):
     dis = abs(math.sqrt((point1[0]-point2[0])**2 + (point1[1]-point2[1])**2))
     return dis
 
-def checkLoc(obstacles, bounds, currentLoc):
+def checkLoc(obs, bounds, currentLoc):
     st = True
-    if currentLoc[0] < 0 or currentLoc[0] > bounds or currentLoc[1] < 0 or currentLoc[1] > bounds:
-        st =  False
 
-    for i in range(len(obstacles)):
-        if obstacles[i] == currentLoc:
+    for i in range(len(obs)):
+        if obs[i] == [currentLoc[0],currentLoc[1]]:
+
             st = False
-            break
+
     return st
 
 def nodeIndex(node, bounds):
@@ -55,9 +55,19 @@ def findShortPath(bounds,start,goal,obs):
     startIndex = nodeIndex((start[0]+1,start[1]+1),bounds)
     current = nodeKeeper[startIndex]
     currentIndex = startIndex
+    plt.plot(start[0],start[1],'o',marker = "D" ,color = 'g',linewidth=5.0)
+    plt.plot(goal[0],goal[1],'o',marker = "D", color = 'r',linewidth=5.0)
+
+    for i in obs:
+        plt.plot(i[0],i[1],color = "k",marker = 's',linewidth=10.0)
+    #black list obstacles
+    for i in range(len(obs)):
+        indx = nodeIndex((obs[i][0]+1,obs[i][1]+1),bounds)
+        nodeKeeper[indx][3] = 1
 
     x= True
     while x == True:
+
 
         templist = []#keep distence values of nodes// resets ever time we move to a new node
 
@@ -111,13 +121,30 @@ def findShortPath(bounds,start,goal,obs):
 
         nibpass = []
         print nib
+        for i in nib:
+            if checkLoc(obs, bounds, nodeKeeper[i]) == False:
+                nib.remove(i)
+                print "removed"
+                print i
+
+
+        print nib
+        print current
 
         if current[3] == 1:
             for j in range(len(nodeKeeper)):
-                if nodeKeeper[j+1][3] == 0:
-                    current = nodeKeeper[j+1]
-                    currentIndex = nodeIndex((current[0]+1,current[1]+1),bounds)
+                print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx"
+                print nodeKeeper[j+1][3]
+                print nodeKeeper[j+1][2]
+                tempnode = nodeKeeper[j+1]
+                print j+1
+                if tempnode[3] == 0 and tempnode[2] != 0:
+                    current = tempnode
+                    currentIndex = nodeIndex((tempnode[0]+1,tempnode[1]+1),bounds)
                     smallIndex = currentIndex
+                    print "Xoooo"
+                    break
+
 
         current[3] = 1 #marking current as visted
 
@@ -149,6 +176,11 @@ def findShortPath(bounds,start,goal,obs):
             x = False
             if nodeKeeper[j+1][3] == 0:
                 x = True
+                break
+
+        plt.axis([-1,bounds,-1,bounds])
+        plt.plot(current[0],current[1],'o', color = "b",linewidth=5.0)
+        plt.pause(.25)
 
 
     #find short path
@@ -163,6 +195,13 @@ def findShortPath(bounds,start,goal,obs):
     print "pathIndex"
     print path
 
+    vx = []
+    vy = []
+    for i in path:
+        vx.append(nodeKeeper[i][0])
+        vy.append(nodeKeeper[i][1])
+    plt.plot(vx,vy,color = "red")
+    plt.show()
 
 
 
@@ -201,4 +240,4 @@ def dDijkstra(Start,goal,bounds,obst):
 test = True
 if test == True:
 
-    findShortPath(5,[0,0],[3,4],'none')
+    findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])
