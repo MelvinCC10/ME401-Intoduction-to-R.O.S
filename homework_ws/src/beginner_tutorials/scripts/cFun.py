@@ -41,17 +41,8 @@ def nodeIndex(node, bounds):
 def nodes(bounds):
     for j in range(bounds):
         for k in range(bounds):
-            dic[nodeIndex((k+1,j+1),bounds)] = [k+1,j+1,0]
+            dic[nodeIndex((k+1,j+1),bounds)] = [k+1,j+1,0,0,0,0,0]
     return dic
-
-
-
-class NNode:
-    x = 0
-    y = 0
-    Index = 0
-    cost = 0
-    parentID = 0
 
 def createNodes(bounds):
     NodeKeeper = []
@@ -68,9 +59,36 @@ def createNodes(bounds):
 def Dijkstra(Start,goal,bounds,obst):
     keeper = {}
     keeper = nodes(bounds)
+    print keeper
     startIndex = nodeIndex(Start,bounds)
     keeper[startIndex].append(0)
     print keeper[startIndex]
+    keeper[startIndex][3] = 1
+    uv = True
+    currentnode = startIndex
+
+    while uv == True:
+        for i in range(bounds*bounds):
+            if keeper[i+1][2] == 0:
+                break
+            else:
+                uv = False
+
+        #determin cost brute force method
+        for i in range(bounds*bounds):
+            keeper[i+1][2] = checkDis(keeper[currentnode],keeper[i+1])
+        #find node with lowest cost
+        for i in range(bounds*bounds):
+            if keeper[i+1][2] == 1 and keeper[i+1][3] == 0:
+                oldnode = currentnode
+                currentnode = keeper[i+1]
+                currentnode[4] = nodeIndex(oldnode,bounds)
+                break
+
+
+
+
+
 
 
 
