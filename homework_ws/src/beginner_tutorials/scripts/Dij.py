@@ -204,40 +204,24 @@ def findShortPath(bounds,start,goal,obs):
     plt.show()
 
 
+    xo = start[0]
+    yo = start[1]
+    theta = 0
+    waypoints = [[xo,yo,theta]]
+    for i in path:
+        x = nodeKeeper[i][0]
+        y = nodeKeeper[i][1]
+        theta = math.atan2((y-yo),(x-xo))
+        waypoints.append([x,y,theta])
+
+    print waypoints
+    return waypoints
+
+
 
 
 #the starting location, goal location, grid information, and obstacle list.
-def dDijkstra(Start,goal,bounds,obst):
-    keeper = {}
-    keeper = nodes(bounds)
-    print keeper
-    startIndex = nodeIndex(Start,bounds)
-    keeper[startIndex].append(0)
-    print keeper[startIndex]
-    keeper[startIndex][3] = 1
-    uv = True
-    currentnode = startIndex
+#test = True
+#if test == True:
 
-    while uv == True:
-        for i in range(bounds*bounds):
-            if keeper[i+1][2] == 0:
-                break
-            else:
-                uv = False
-
-        #determin cost brute force method
-        for i in range(bounds*bounds):
-            keeper[i+1][2] = checkDis(keeper[currentnode],keeper[i+1])
-        #find node with lowest cost
-        for i in range(bounds*bounds):
-            if keeper[i+1][2] == 1 and keeper[i+1][3] == 0:
-                oldnode = currentnode
-                currentnode = keeper[i+1]
-                currentnode[4] = nodeIndex(oldnode,bounds)
-                break
-
-
-test = True
-if test == True:
-
-    findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])
+    #findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])

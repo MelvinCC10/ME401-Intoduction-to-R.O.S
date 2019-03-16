@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import rospy
+import Dij
 import numpy
 import dubins
 import matplotlib
@@ -38,8 +39,8 @@ Communications Failed
 kp = .02
 des = 0
 error = 0
-low_limt = -.800000
-high_limit = .800000
+low_limt = -8.800000
+high_limit = 8.800000
 coin = 0
 end = False
 tol = .1
@@ -74,8 +75,8 @@ if __name__=="__main__":
         print msg
 
 
-        waypoints = [[0,0, 0], [0,1, 0], [2,2, 90], [3, -3,-90]]
-        turning_radius = .3
+        waypoints = findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])#[[0,0, 0], [0,1, 0], [2,2, 90], [3, -3,-90]]
+        turning_radius = 0
         step_size = 0.5
         wpm = []
         # for each item in waypoints list
