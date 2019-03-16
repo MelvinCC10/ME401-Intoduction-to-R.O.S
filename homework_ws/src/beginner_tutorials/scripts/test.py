@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 import rospy
 import Dij
-import numpy
-import dubins
-import matplotlib
-import matplotlib.pyplot as plt
 import time
 import math
 from geometry_msgs.msg import Twist
 from beginner_tutorials.msg import Position
 from nav_msgs.msg import Odometry
 import sys, select, os
+
+
 if os.name == 'nt': # if windows
   import msvcrt
 else:
@@ -26,30 +24,24 @@ def callback_ori(data, data_out):
 	data_out.angular.pitch = data.angular.pitch
 	data_out.angular.yaw   = data.angular.yaw
 
-
-
 msg = """
 Turtle Bot will move automatically
-WayPoint test
+WayPoint
 """
 
 e = """
 Communications Failed
 """
-kp = .02
+kp = .035
 des = 0
 error = 0
-low_limt = -8.800000
-high_limit = 8.800000
+low_limt = -.5
+high_limit = .5
 coin = 0
 end = False
-tol = .1
-num_wraps = 0
-threshold = 30
-olddes = 0
+tol = .2
 
-
-#waypoints =[[0,0], [0,1], [2,2], [3, -3]]
+waypoints =Dij.findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])#[[0,0], [0,1], [2,2], [3, -3]]
 
 
 if __name__=="__main__":
@@ -74,61 +66,6 @@ if __name__=="__main__":
 
         print msg
 
-
-        waypoints =  [[0,0, 0], [0,1, 0], [2,2, 90], [3, -3,-90]]#Dij.findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])#
-        print waypoints
-        turning_radius = 0
-        step_size = 0.5
-        wpm = []
-
-        print "1"
-        # for each item in waypoints list
-        for i in range(len(waypoints)):
-
-            #Set current point to current iteration index ie. iteration 0 use index 0 waypoints
-            q0 = waypoints[i+1]
-
-            #if next point to index (current iteration + 1) is True
-            try:
-                q1 = waypoints[i+1+1]
-                print "2"
-            except:
-                break
-                # next point  = index (current iteration + 1)
-            #else
-                #break
-            #set q1, q2
-            #find path from current point to next point
-            print "2"
-            path = dubins.shortest_path(q0, q1, turning_radius)
-            configurations, _ = path.sample_many(step_size)
-            # add all points to end of master list
-            print "2"
-            for i in range(len(configurations)):
-                wpm.append(configurations[i])
-            print configurations
-            print len(configurations)
-            print "3"
-        setx = []
-        sety = []
-        for i in range(len(wpm)):
-            setx.append(wpm[i][0])
-            sety.append(wpm[i][1])
-
-        print "x"
-        print setx
-        print "y"
-        print sety
-
-        plt.plot(setx, sety)
-        plt.grid()
-        plt.show()
-
-
-
-
-
-
         twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
         pub.publish(twist)
@@ -136,54 +73,42 @@ if __name__=="__main__":
 
 
         #set waypoint to first way WayPoint
-        wp = wpm[coin]
-        print wpm
+        wp = waypoints[coin]
 
 
         while not rospy.is_shutdown():
 
-
-
+            print wp
+            print "1"
 
             # check current pose
             x = position.linear.x
             y = position.linear.y
-
+            print "2"
 
             # if not withen a spec range of waypoint
             if not ((wp[0] - tol) <= x <= (wp[0] + tol)) or not ((wp[1] - tol) <= y <= (wp[1] + tol)):
                 #change heading twords WayPoint
                 des = math.atan2((wp[1]-y),(wp[0]-x)) * (180/3.14)
-                print des
-
-                if olddes < -threshold and des > threshold: # from -pi to pi (increasing negative)
-            		num_wraps = num_wraps - 1
-            	elif olddes > threshold and des < -threshold:
-            		num_wraps = num_wraps + 1
-
-                olddes = des
-                des = des + 360 * num_wraps
-
-
-
+                #twist.linear.x = 0
             else:
                 if end == False:
 
                     coin = coin +1
                     print coin
-                    wp = wpm[coin]
-                    if not wpm[coin]:
+                    wp = waypoints[coin]
+                    if not waypoints[coin]:
                         twist.linear.x = 0
                         end = True
                         break
 
 
             error = des - position.angular.yaw
+            print error
 
 
-
-            #if 1 >= error:
-            twist.linear.x = .2
+            if 1 >= error:
+                twist.linear.x = .2
 
             cmd = kp*error
 
