@@ -75,9 +75,9 @@ if __name__=="__main__":
         print msg
 
 
-        waypoints =  [[0,0, 0], [0,1, 0], [2,2, 90], [3, -3,-90]]#Dij.findShortPath(5,[0,0],[0,2],[[0,1],[1,1],[2,2],[4,4]])#
+        waypoints =  Dij.findShortPath(10,[0,0],[1,9],[(1,1), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)])#
         print waypoints
-        turning_radius = 0
+        turning_radius = .001
         step_size = 0.5
         wpm = []
 
@@ -86,11 +86,11 @@ if __name__=="__main__":
         for i in range(len(waypoints)):
 
             #Set current point to current iteration index ie. iteration 0 use index 0 waypoints
-            q0 = waypoints[i+1]
+            q0 = waypoints[i]
 
             #if next point to index (current iteration + 1) is True
             try:
-                q1 = waypoints[i+1+1]
+                q1 = waypoints[i+1]
                 print "2"
             except:
                 break
@@ -99,7 +99,7 @@ if __name__=="__main__":
                 #break
             #set q1, q2
             #find path from current point to next point
-            print "2"
+            print "here"
             path = dubins.shortest_path(q0, q1, turning_radius)
             configurations, _ = path.sample_many(step_size)
             # add all points to end of master list

@@ -36,6 +36,7 @@ def checkLoc(obstacles, gridBond, currentLoc):
 def nodeIndex(node, bounds):
     #                   y                  x
     index = bounds*node[1] - (bounds-node[0])
+    print index
     return index
 
 def nodes(bounds):
@@ -110,6 +111,7 @@ if test == True:
     checkLoc(obs, grid, currLoc)
 
     nodeIndex([3,3],10)
+
 
     dic = {}
     nodes(3)

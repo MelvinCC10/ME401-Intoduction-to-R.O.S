@@ -43,7 +43,7 @@ def nodes(bounds):
     for j in range(bounds):
         for k in range(bounds):
                                         #  [x,y,cost,visted,parentID,current]
-            dic[nodeIndex((k+1,j+1),bounds)] = [k,j,0,0,0,0,0,0]
+            dic[nodeIndex((k+1,j+1),bounds)] = [k,j,0,0,0,0,0,0,0]
     return dic
 
 def createNodes(bounds):
@@ -53,6 +53,7 @@ def createNodes(bounds):
 def findShortPath(bounds,start,goal,obs):
     nodeKeeper = createNodes(bounds)
     startIndex = nodeIndex((start[0]+1,start[1]+1),bounds)
+    goalIndex = nodeIndex((goal[0]+1,goal[1]+1),bounds)
     current = nodeKeeper[startIndex]
     currentIndex = startIndex
     plt.plot(start[0],start[1],'o',marker = "D" ,color = 'g',linewidth=5.0)
@@ -156,8 +157,9 @@ def findShortPath(bounds,start,goal,obs):
             if nodeKeeper[i][3] == 0:#if unvisted
                 if (checkDis(nodeKeeper[i],current)+current[2]) < (nodeKeeper[i][2]) or nodeKeeper[i][2] == 0:
                     nodeKeeper[i][2] = checkDis(nodeKeeper[i],current) + current[2]
+                    nodeKeeper[i][8] = nodeKeeper[i][2] + checkDis(nodeKeeper[i],goal)
                     nodeKeeper[i][4] =currentIndex
-                templist.append([(i),nodeKeeper[i][2]])
+                templist.append([(i),nodeKeeper[i][8]])
 
         print "--------------------------------------------------------"
         print templist
@@ -177,6 +179,8 @@ def findShortPath(bounds,start,goal,obs):
             if nodeKeeper[j+1][3] == 0:
                 x = True
                 break
+        if currentIndex == goalIndex:
+            x = False
 
         plt.axis([-1,bounds,-1,bounds])
         plt.plot(current[0],current[1],'o', color = "b",linewidth=5.0)
@@ -221,7 +225,7 @@ def findShortPath(bounds,start,goal,obs):
 
 
 #the starting location, goal location, grid information, and obstacle list.
-#test = True
-#if test == True:
+test = True
+if test == True:
 
-    #findShortPath(10,[0,0],[1,9],[[8,9]])
+    findShortPath(10,[0,0],[1,9],[[8,9]])
