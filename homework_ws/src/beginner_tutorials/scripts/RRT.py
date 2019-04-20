@@ -10,6 +10,7 @@ def checkDis(point1,point2):
 
 def RRT(bounds,start,goal,obs):
 
+    print "hello"
     #unit of travel
     unit = 1
     #tolerence
@@ -23,12 +24,13 @@ def RRT(bounds,start,goal,obs):
 
     CurrentNode = 0
 
-    while checkDis([nodeKeeper[CurrentNode][2],nodeKeeper[CurrentNode][3]],goal] > tol:
+    while abs(checkDis([nodeKeeper[CurrentNode][2],nodeKeeper[CurrentNode][3]],goal)) > tol:
 
         #pick a random point with in the bounds of
-        rndx = random.randint(0,bounds[0])
-        rndy = random.randint(0,bounds[0])
+        rndx = random.uniform(0,bounds[0])
+        rndy = random.uniform(0,bounds[0])
         rndP = [rndx,rndy]
+
 
         #find closet point
         dummyDis = 999999999999999999
@@ -39,14 +41,41 @@ def RRT(bounds,start,goal,obs):
                 dummyDis = buffer
 
         #create a new node 1 unit twords the direction of the random point from the closet nodes
-        angle = atan2((nodeKeeper[closetNode][3]-rndy),(nodeKeeper[closetNode][2]-rndx)*(3.14/180)
-        xadd = unit*cos(angle)
-        yadd = unit*sin(angle)
-        nodeKeeper[CurrentNode+1] = [CurrentNode+1,nodeKeeper[closetNode][0],nodeKeeper[closetNode][2]+xadd,nodeKeeper[closetNode][3]+yadd]]
+        angle = math.atan2((nodeKeeper[closetNode][3]-rndy),(nodeKeeper[closetNode][2]-rndx))*(180/3.14)
+        xa = unit*math.cos(angle)
+        ya = unit*math.sin(angle)
+        print angle
+        print xa
+        print ya
+
+        nodeKeeper[CurrentNode+1] = [CurrentNode+1,closetNode,nodeKeeper[closetNode][2]+xa,nodeKeeper[closetNode][3]+ya]
 
         CurrentNode = CurrentNode+1
 
-    nodeKeeper[CurrentNode+1] = [CurrentNode+1,CurrentNode,]
+        #print to graph
+        plt.axis([-1,bounds[0],-1,bounds[0]])
+        plt.plot(nodeKeeper[CurrentNode][2],nodeKeeper[CurrentNode][3],'o', color = "b",linewidth=5.0)
+        plt.pause(.05)
+
+
+    nodeKeeper[CurrentNode+1] = [CurrentNode+1,CurrentNode,goal[0],goal[1]]
+    CurrentNode = CurrentNode+1
+    print nodeKeeper
+
+    id = 1
+
+    pathx = []
+    pathy = []
+
+    while id > 0:
+        id = nodeKeeper[CurrentNode][0]
+        pathx.append(nodeKeeper[CurrentNode][2])
+        pathy.append(nodeKeeper[CurrentNode][3])
+        CurrentNode = nodeKeeper[CurrentNode][1]
+
+
+    plt.plot(pathx,pathy,color = "red")
+    plt.show()
 
 
 
@@ -56,7 +85,6 @@ def RRT(bounds,start,goal,obs):
     return
 
 
-
-
-
 if test == True:
+    print "Running Test"
+    RRT([10,10],[0,0],[9,9],[[8,9]])
