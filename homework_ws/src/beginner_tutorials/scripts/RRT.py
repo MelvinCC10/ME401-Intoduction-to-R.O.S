@@ -12,7 +12,10 @@ def RRT(bounds,start,goal,obs):
 
     print "hello"
     #unit of travel
-    unit = 1
+    m = (goal[1]-start[1])/(goal[0]-start[0])
+    b = (start[1])/(start[0]*m)
+
+    unit = 1#*(ideal/10)
     #tolerence
     tol = 2
 
@@ -26,10 +29,31 @@ def RRT(bounds,start,goal,obs):
 
     while abs(checkDis([nodeKeeper[CurrentNode][2],nodeKeeper[CurrentNode][3]],goal)) > tol:
 
-        #pick a random point with in the bounds of
-        rndx = random.uniform(0,bounds[0])
-        rndy = random.uniform(0,bounds[0])
-        rndP = [rndx,rndy]
+
+        agl = math.atan2(goal[1]-start[1],goal[0]-start[0])
+        print agl
+        m2 = math.tan(.05+agl)
+        print m2
+        m3 = math.tan(agl-.05)
+        print m3
+        incone = False
+
+        while incone ==False:
+            #pick a random point with in the bounds of
+            c1 = False
+            c2 = False
+            rndx = random.uniform(0,bounds[0])
+            rndy = random.uniform(0,bounds[0])
+            rndP = [rndx,rndy]
+            print rndP
+            if rndy< (m2*rndx+b) and rndy> (m3*rndx+b):
+                incone = True
+
+
+        incone = False
+
+
+
 
 
         #find closet point
@@ -73,9 +97,11 @@ def RRT(bounds,start,goal,obs):
         pathy.append(nodeKeeper[CurrentNode][3])
         CurrentNode = nodeKeeper[CurrentNode][1]
 
-
+    plt.title("Cone Bias iteration 1")
     plt.plot(pathx,pathy,color = "red")
+    plt.savefig("Cone Bias Iteration1.png",bbox_inches="tight")
     plt.show()
+    
 
 
 
@@ -87,4 +113,4 @@ def RRT(bounds,start,goal,obs):
 
 if test == True:
     print "Running Test"
-    RRT([10,10],[0,0],[9,9],[[8,9]])
+    RRT([10,10],[1,1],[9,9],[[8,9]])
