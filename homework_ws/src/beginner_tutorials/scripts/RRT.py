@@ -38,16 +38,16 @@ def RRT(bounds,start,goal,obs):
         print m3
         incone = False
 
-        while incone ==False:
+        #while incone ==False:
             #pick a random point with in the bounds of
-            c1 = False
-            c2 = False
-            rndx = random.uniform(0,bounds[0])
-            rndy = random.uniform(0,bounds[0])
-            rndP = [rndx,rndy]
-            print rndP
-            if rndy< (m2*rndx+b) and rndy> (m3*rndx+b):
-                incone = True
+        c1 = False
+        c2 = False
+        rndx = random.uniform(0,bounds[0])
+        rndy = random.uniform(0,bounds[0])
+        rndP = [rndx,rndy]
+        print rndP
+            #if rndy< (m2*rndx+b) and rndy> (m3*rndx+b):
+                #incone = True
 
 
         incone = False
@@ -97,11 +97,11 @@ def RRT(bounds,start,goal,obs):
         pathy.append(nodeKeeper[CurrentNode][3])
         CurrentNode = nodeKeeper[CurrentNode][1]
 
-    plt.title("Cone Bias iteration 1")
+    plt.title("RRT")
     plt.plot(pathx,pathy,color = "red")
-    plt.savefig("Cone Bias Iteration1.png",bbox_inches="tight")
+    plt.savefig("RRT.png",bbox_inches="tight")
     plt.show()
-    
+
 
 
 
