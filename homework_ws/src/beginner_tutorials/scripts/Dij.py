@@ -180,7 +180,7 @@ def findShortPath(bounds,start,goal,obs):
 
         plt.axis([-1,bounds,-1,bounds])
         plt.plot(current[0],current[1],'o', color = "b",linewidth=5.0)
-        plt.pause(.25)
+        #plt.pause(.01)
 
 
     #find short path
