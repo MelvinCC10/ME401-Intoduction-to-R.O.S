@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 import math
 import matplotlib.pyplot as plt
+import numpy as np
+import csv
+
 
 # This function will generate a dubins curve that passes through a given set of
 # waypoints and return a list of points for the dubin curve.
@@ -202,7 +205,6 @@ def findShortPath(bounds,start,goal,obs):
         vy.append(nodeKeeper[i][1])
     plt.plot(vx,vy,color = "blue")
     plt.show()
-
 
     xo = start[0]
     yo = start[1]

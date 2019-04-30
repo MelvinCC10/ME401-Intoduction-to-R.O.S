@@ -3,6 +3,7 @@ import rospy
 import Dij
 import numpy
 import dubins
+import csv
 import matplotlib
 import matplotlib.pyplot as plt
 import time
@@ -45,7 +46,7 @@ Turtle Bot will move automatically
 e = """
 Communications Failed
 """
-N = 2
+N = 1
 kp = .02
 des = 0
 error = 0
@@ -152,6 +153,11 @@ if __name__=="__main__":
         time.sleep(2)
         oldLos = 0
 #####################################################################
+        ex = []
+        ey = []
+        cx = []
+        cy = []
+
 
         while not rospy.is_shutdown():
 
@@ -166,6 +172,13 @@ if __name__=="__main__":
             # check current pose
             x1 = cur_pose.x
             y1 = cur_pose.y
+            ex.append(x1)
+            ey.append(y1)
+            cx.append(x)
+            cy.append(y)
+            print cy
+            print len(cy)
+
             # if not withen a spec range of waypoint
             if not ((wp[0] - tol) <= x1 <= (wp[0] + tol)) or not ((wp[1] - tol) <= y1 <= (wp[1] + tol)):
                 #change heading twords WayPoint
@@ -216,7 +229,11 @@ if __name__=="__main__":
             pub.publish(twist)
             oldLos = LOS
 
+            if len(ex) > 450:
+                break
+
             rate.sleep()
+
 
     except:
 
@@ -228,6 +245,18 @@ if __name__=="__main__":
         twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
         pub.publish(twist)
+
+        new_list = zip(ex, ey)
+        with open('E.csv', 'wb+') as csvfile:
+             filewriter = csv.writer(csvfile)
+             filewriter.writerows(new_list)
+        print "wrote"
+
+        new_list = zip(cx, cy)
+        with open('C.csv', 'wb+') as csvfile:
+             filewriter = csv.writer(csvfile)
+             filewriter.writerows(new_list)
+        print "wrote"
 
     if os.name != 'nt':
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)

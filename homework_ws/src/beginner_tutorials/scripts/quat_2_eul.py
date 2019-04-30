@@ -138,7 +138,7 @@ if __name__== '__main__':
 		#pub1 = rospy.Publisher('/eul1', Position, queue_size=10)
 		# create the subscriber, subscribe to the /odom message which is created by
 		# the turtlebot gazebo simulation
-		sub = rospy.Subscriber ('odom', Odometry, get_rotation, (pub))
+		sub = rospy.Subscriber ('/tb1/odom', Odometry, get_rotation, (pub))
 		#sub = rospy.Subscriber ('/tb1/odom', Odometry, get_rotation1, (pub))
 		# create a rate object for controlling the refresh rate, argument is the
 		# desired refresh rate in Hz
