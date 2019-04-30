@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		# and 3 angular position states (x,y,z,roll,pitch,yaw)
 		position = Position()
                 twist = Twist()
-                
+
 
                 # create subscriber to the euler angle node, inside this node
 		# the quaternion to euler conversion and yaw wrapping is being
@@ -64,7 +64,7 @@ if __name__ == "__main__":
 		myData = ["x","y","z","roll","pitch","yaw","CMD","CMD2"]
 
 		# the following code creates a base filename containing the data and time
-		fileNameBase = "./scripts/log_files/" + datetime.datetime.now().strftime("%b_%d_%H_%M")
+		fileNameBase = "/home/reven/me_401/homework_ws/src/beginner_tutorials/scripts" + datetime.datetime.now().strftime("%b_%d_%H_%M")
 
 		# the end of the file will always be ".csv"
 		fileNameSuffix = ".csv"
@@ -120,7 +120,7 @@ if __name__ == "__main__":
 			# print status message
 			print "write complete, waiting"
 
-                        
+
 
 			r.sleep()
 
