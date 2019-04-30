@@ -179,7 +179,7 @@ def findShortPath(bounds,start,goal,obs):
                 break
 
         plt.axis([-1,bounds,-1,bounds])
-        plt.plot(current[0],current[1],'o', color = "b",linewidth=5.0)
+        #plt.plot(current[0],current[1],'o', color = "w",linewidth=5.0)
         #plt.pause(.01)
 
 
@@ -200,7 +200,7 @@ def findShortPath(bounds,start,goal,obs):
     for i in path:
         vx.append(nodeKeeper[i][0])
         vy.append(nodeKeeper[i][1])
-    plt.plot(vx,vy,color = "red")
+    plt.plot(vx,vy,color = "blue")
     plt.show()
 
 
