@@ -62,7 +62,7 @@ def findShortPath(bounds,start,goal,obs):
     plt.plot(goal[0],goal[1],'o',marker = "D", color = 'r',linewidth=5.0)
 
     for i in obs:
-        plt.plot(i[0],i[1],color = "k",marker = 's',linewidth=10.0)
+        plt.plot(i[0],i[1],color = "k",marker = 's',linewidth=10.0,markersize = 20)
     #black list obstacles
     for i in range(len(obs)):
         indx = nodeIndex((obs[i][0]+1,obs[i][1]+1),bounds)
