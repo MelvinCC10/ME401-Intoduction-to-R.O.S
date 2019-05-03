@@ -17,7 +17,7 @@ import numpy as np
 
 #### SET THIS MODE TO FALSE FOR CONSTANT SPEEP/DIRECTION ####
 #### SET THIS MODE TO TRUE FOR RANDOM WAYPOINT EVASION   ####
-random_evader = False
+random_evader = True
 #############################################################
 
 time_prev = time.time()

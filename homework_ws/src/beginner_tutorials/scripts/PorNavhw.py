@@ -172,14 +172,13 @@ if __name__=="__main__":
             # check current pose
             x1 = cur_pose.x
             y1 = cur_pose.y
-
             ex.append(x1)
             ey.append(y1)
             cx.append(x)
             cy.append(y)
 
+
             ##################################################################
-            
             twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
             twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
 
@@ -188,7 +187,7 @@ if __name__=="__main__":
             #ProNav done here
             print position.angular.yaw
             LOS = 0-(math.atan2((cur_pose.y-y),(cur_pose.x-x)) * (180/3.14))
-            cmd = -N*(LOS-oldLos)
+            cmd = -N*(LOS-oldLos)*10
 
 
             twist.linear.x = 0.2; twist.linear.y = 0.0; twist.linear.z = 0.0
@@ -214,13 +213,13 @@ if __name__=="__main__":
         pub.publish(twist)
 
         new_list = zip(ex, ey)
-        with open('E.csv', 'wb+') as csvfile:
+        with open('Ep2_1000p.csv', 'wb+') as csvfile:
              filewriter = csv.writer(csvfile)
              filewriter.writerows(new_list)
         print "wrote"
 
         new_list = zip(cx, cy)
-        with open('C.csv', 'wb+') as csvfile:
+        with open('Cp2_1000p.csv', 'wb+') as csvfile:
              filewriter = csv.writer(csvfile)
              filewriter.writerows(new_list)
         print "wrote"

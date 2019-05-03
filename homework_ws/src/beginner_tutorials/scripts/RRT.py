@@ -12,8 +12,7 @@ def RRT(bounds,start,goal,obs):
 
     print "hello"
     #unit of travel
-    m = (goal[1]-start[1])/(goal[0]-start[0])
-    b = (start[1])/(start[0]*m)
+
 
     unit = 1#*(ideal/10)
     #tolerence
@@ -113,4 +112,4 @@ def RRT(bounds,start,goal,obs):
 
 if test == True:
     print "Running Test"
-    RRT([10,10],[1,1],[9,9],[[8,9]])
+    RRT([10,10],[0,0],[1,9],[[1,1], [4,4], [3,4], [5,0], [5,1], [0,7], [1,7], [2,7], [3,7]])
