@@ -65,8 +65,12 @@ def findShortPath(bounds,start,goal,obs):
         plt.plot(i[0],i[1],color = "k",marker = 's',linewidth=10.0,markersize = 20)
     #black list obstacles
     for i in range(len(obs)):
+
         indx = nodeIndex((obs[i][0]+1,obs[i][1]+1),bounds)
-        nodeKeeper[indx][3] = 1
+        print indx
+        if indx < bounds*bounds:
+            #break
+            nodeKeeper[indx][3] = 1
 
     x= True
     while x == True:
@@ -123,12 +127,13 @@ def findShortPath(bounds,start,goal,obs):
                 nib.remove((currentIndex-bounds-1))
 
         nibpass = []
+        print "Start"
         print nib
         for i in nib:
             if checkLoc(obs, bounds, nodeKeeper[i]) == False:
                 nib.remove(i)
                 print "removed"
-                print i
+                #print i
 
 
         print nib
@@ -136,16 +141,16 @@ def findShortPath(bounds,start,goal,obs):
 
         if current[3] == 1:
             for j in range(len(nodeKeeper)):
-                print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx"
-                print nodeKeeper[j+1][3]
-                print nodeKeeper[j+1][2]
+
+                #print nodeKeeper[j+1][3]
+                #print nodeKeeper[j+1][2]
                 tempnode = nodeKeeper[j+1]
-                print j+1
+                #print j+1
                 if tempnode[3] == 0 and tempnode[2] != 0:
                     current = tempnode
                     currentIndex = nodeIndex((tempnode[0]+1,tempnode[1]+1),bounds)
                     smallIndex = currentIndex
-                    print "Xoooo"
+
                     break
 
 
@@ -162,16 +167,22 @@ def findShortPath(bounds,start,goal,obs):
                     nodeKeeper[i][4] =currentIndex
                 templist.append([(i),nodeKeeper[i][2]])
 
-        print "--------------------------------------------------------"
-        print templist
-        print nodeKeeper
-        currentSmall = 999999999999999999*99 #some random large value
-        for i in range(len(templist)): #find shortest_path
+        #print "--------------------------------------------------------"
+        #print templist
+        #print nodeKeeper
+        if not templist:
+            break
+
+        currentSmall = 999999999999999999*99
+        print "before fore"
+        print templist#some random large value
+        for i in range(len(templist)):
+            print "before if"#find shortest_path
             if templist[i][1] < currentSmall:
                 smallIndex = templist[i][0]
                 currentSmall = templist[i][1]
-        print smallIndex
-        print "--------------------------------------------------------"
+        #print smallIndex
+        #print "--------------------------------------------------------"
         current = nodeKeeper[smallIndex]
         currentIndex = smallIndex
 
@@ -188,6 +199,7 @@ def findShortPath(bounds,start,goal,obs):
 
     #find short path
     pathIndex = nodeIndex((goal[0]+1,goal[1]+1),bounds)
+    print nodeKeeper
     path = []
     while pathIndex != startIndex:
         print pathIndex
@@ -223,7 +235,7 @@ def findShortPath(bounds,start,goal,obs):
 
 
 #the starting location, goal location, grid information, and obstacle list.
-#test = True
-#if test == True:
+test = True
+if test == True:
 
-    #findShortPath(10,[0,0],[1,9],[[8,9]])
+    findShortPath(10,[0,0],[1,9],[(1,1), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)])

@@ -228,4 +228,4 @@ def findShortPath(bounds,start,goal,obs):
 test = True
 if test == True:
 
-    findShortPath(10,[0,0],[1,9],[[8,9]])
+    findShortPath(10,[0,0],[1,9],[(1,1), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)])

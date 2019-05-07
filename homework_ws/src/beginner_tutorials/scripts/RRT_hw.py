@@ -125,13 +125,49 @@ def RRT(bounds,start,goal,obs):
     plt.savefig("RRT.png",bbox_inches="tight")
     plt.show()
 
-    new_list = zip(pathx, pathy)
-    with open('RRThwp2.csv', 'wb+') as csvfile:
-         filewriter = csv.writer(csvfile)
-         filewriter.writerows(new_list)
-    print "wrote"
+    #new_list = zip(pathx, pathy)
+    #with open('RRThwp2.csv', 'wb+') as csvfile:
+         #filewriter = csv.writer(csvfile)
+         #filewriter.writerows(new_list)
+    #print "wrote"
 
+    obsd = []
+    silly = True
+    def nodeIndex(node, bounds):
+        #                   y                  x
+        index = bounds*node[1] - (bounds-node[0])
+        return index
 
+    def nodes(bounds):
+        dic = {}
+        for j in range(bounds):
+            for k in range(bounds):
+                                            #  [x,y,cost,visted,parentID,current]
+                dic[nodeIndex((k+1,j+1),bounds)] = [k,j,k,j,0,0,0,0]
+        return dic
+
+    def createNodes(bounds):
+        nodeKeeperr = nodes(bounds)
+        return nodeKeeperr
+    path = nodeKeeper
+    nodeKeeper = createNodes(20)
+
+    for i in range(len(nodeKeeper)):
+        for j in range(len(full)):
+            if checkDis([full[j][0],full[j][1]],[nodeKeeper[i+1][2],nodeKeeper[i+1][3]])> 2:
+                for k in range(len(full)):
+                    if [nodeKeeper[i+1][2],nodeKeeper[i+1][3]] == full[k]:
+                        silly = False
+        if silly == False:
+            obsd.append([nodeKeeper[i+1][0],nodeKeeper[i+1][1]])
+        silly == True
+
+    obsd = obsd + obs
+    print obsd
+    import time
+    time.sleep(5)
+    import Dij
+    testing = Dij.findShortPath(20,[0,0],[20,20],obsd)
 
 
 
@@ -139,6 +175,6 @@ def RRT(bounds,start,goal,obs):
     return full
 
 
-#if test == True:
-    #print "Running Test"
-    #RRT([10,10],[0,0],[1,9],[[1,1], [4,4], [3,4], [5,0], [5,1], [0,7], [1,7], [2,7], [3,7]])
+if test == True:
+    print "Running Test"
+    RRT([20,20],[0,0],[20,20],[[1,9]])
