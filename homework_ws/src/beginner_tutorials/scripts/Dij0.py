@@ -56,11 +56,11 @@ def findShortPath(bounds,start,goal,obs):
     goalIndex = nodeIndex((goal[0]+1,goal[1]+1),bounds)
     current = nodeKeeper[startIndex]
     currentIndex = startIndex
-    plt.plot(start[0],start[1],'o',marker = "D" ,color = 'g',linewidth=5.0)
-    plt.plot(goal[0],goal[1],'o',marker = "D", color = 'r',linewidth=5.0)
+    #plt.plot(start[0],start[1],'o',marker = "D" ,color = 'g',linewidth=5.0)
+    #plt.plot(goal[0],goal[1],'o',marker = "D", color = 'r',linewidth=5.0)
 
-    for i in obs:
-        plt.plot(i[0],i[1],color = "k",marker = 's',linewidth=10.0)
+    #for i in obs:
+        #plt.plot(i[0],i[1],color = "k",marker = 's',linewidth=10.0)
     #black list obstacles
     for i in range(len(obs)):
         indx = nodeIndex((obs[i][0]+1,obs[i][1]+1),bounds)
@@ -182,9 +182,9 @@ def findShortPath(bounds,start,goal,obs):
         if currentIndex == goalIndex:
             x = False
 
-        plt.axis([-1,bounds,-1,bounds])
-        plt.plot(current[0],current[1],'o', color = "b",linewidth=5.0)
-        plt.pause(.25)
+        #plt.axis([-1,bounds,-1,bounds])
+        #plt.plot(current[0],current[1],'o', color = "b",linewidth=5.0)
+        #plt.pause(.25)
 
 
     #find short path
@@ -204,8 +204,8 @@ def findShortPath(bounds,start,goal,obs):
     for i in path:
         vx.append(nodeKeeper[i][0])
         vy.append(nodeKeeper[i][1])
-    plt.plot(vx,vy,color = "red")
-    plt.show()
+    #plt.plot(vx,vy,color = "red")
+    #plt.show()
 
 
     xo = start[0]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy
-import RRT_hw
+
 import Dij0
 import numpy
 import csv
@@ -46,7 +46,7 @@ low_limt = -8.800000
 high_limit = 8.800000
 coin = 0
 end = False
-tol = .1
+tol = .3
 num_wraps = 0
 threshold = 30
 olddes = 0
@@ -77,9 +77,12 @@ if __name__=="__main__":
 
         print msg
 
-
+        unknown = [(0,3),(2,3),(2,4)]
+        obs = [(1,1), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)]
         #waypoints =  RRT_hw.RRT([10,10],[0,0],[1,9],[[1,1], [4,4], [3,4], [5,0], [5,1], [0,7], [1,7], [2,7], [3,7]])
-        waypoints =  Dij0.findShortPath(10,[0,0],[1,9],[(1,1), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)])
+        waypoints =  Dij0.findShortPath(10,[0,0],[1,9],obs)
+	print "not rrt"
+	time.sleep(2)
 
         print waypoints
         turning_radius = .001
@@ -118,6 +121,40 @@ if __name__=="__main__":
             y = position.linear.y
             ex.append(x)
             ey.append(y)
+
+            print "heelo"
+            un = []
+            for i in range(len(unknown)):
+                checking = len(unknown)
+                print "heelo"
+                if unknown[i][0] < (x+2) or unknown[i][0] > (x-2):
+                    print "heelo"
+                    if unknown[i][1] < (y+2) or unknown[i][1] > (y-2):
+                        print "heelo"
+                        obs.append(unknown.pop(i))
+
+
+                        print 'heelo'
+                        un.append((i))
+                        print 'heelo'
+
+
+
+                        wpm =  Dij0.findShortPath(10,[int(x),int(y)],[1,9],obs)
+                        time.sleep(.5)
+                        coin = 1
+                        wp = wpm[coin]
+                if len(unknown) < checking:
+                    break
+
+
+            print "heeloooo"
+            print len(un)
+            #for i in range(len(un)):
+            #    print "heeloooo"
+                #unknown.remove(unknown[un[i]])
+
+
 
 
             # if not withen a spec range of waypoint
@@ -174,7 +211,7 @@ if __name__=="__main__":
     finally:
 
         new_list = zip(ex, ey)
-        with open('p6_hw5.csv', 'wb+') as csvfile:
+        with open('p5_hw5.csv', 'wb+') as csvfile:
              filewriter = csv.writer(csvfile)
              filewriter.writerows(new_list)
         print "wrote"
