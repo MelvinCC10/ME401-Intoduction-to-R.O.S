@@ -46,7 +46,7 @@ low_limt = -8.800000
 high_limit = 8.800000
 coin = 0
 end = False
-tol = .3
+tol = .15
 num_wraps = 0
 threshold = 30
 olddes = 0
@@ -77,10 +77,10 @@ if __name__=="__main__":
 
         print msg
 
-        unknown = [(0,3),(2,3),(2,4)]
-        obs = [(1,1), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)]
+        unknown = [(1,0),(2,3),(2,4),(2,2),(3,6),(3,5), (4,4), (3,4), (5,0), (5,1), (0,7), (1,7), (2,7), (3,7)]
+        obs = [(1,1)]
         #waypoints =  RRT_hw.RRT([10,10],[0,0],[1,9],[[1,1], [4,4], [3,4], [5,0], [5,1], [0,7], [1,7], [2,7], [3,7]])
-        waypoints =  Dij0.findShortPath(10,[0,0],[1,9],obs)
+        waypoints =  Dij0.findShortPath(10,[0,0],[9,9],obs)
 	print "not rrt"
 	time.sleep(2)
 
@@ -127,9 +127,9 @@ if __name__=="__main__":
             for i in range(len(unknown)):
                 checking = len(unknown)
                 print "heelo"
-                if unknown[i][0] < (x+2) or unknown[i][0] > (x-2):
+                if unknown[i][0] < (x+.5) or unknown[i][0] > (x-.5):
                     print "heelo"
-                    if unknown[i][1] < (y+2) or unknown[i][1] > (y-2):
+                    if unknown[i][1] < (y+.5) or unknown[i][1] > (y-.5):
                         print "heelo"
                         obs.append(unknown.pop(i))
 
@@ -211,7 +211,7 @@ if __name__=="__main__":
     finally:
 
         new_list = zip(ex, ey)
-        with open('p5_hw5.csv', 'wb+') as csvfile:
+        with open('backtrack2.csv', 'wb+') as csvfile:
              filewriter = csv.writer(csvfile)
              filewriter.writerows(new_list)
         print "wrote"

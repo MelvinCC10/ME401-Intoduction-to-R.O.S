@@ -83,48 +83,7 @@ if __name__=="__main__":
         step_size = 0.5
         wpm = []
 
-        print "1"
-        # for each item in waypoints list
-        for i in range(len(waypoints)):
 
-            #Set current point to current iteration index ie. iteration 0 use index 0 waypoints
-            q0 = waypoints[i]
-
-            #if next point to index (current iteration + 1) is True
-            try:
-                q1 = waypoints[i+1]
-                print "2"
-            except:
-                break
-                # next point  = index (current iteration + 1)
-            #else
-                #break
-            #set q1, q2
-            #find path from current point to next point
-            print "here"
-            path = dubins.shortest_path(q0, q1, turning_radius)
-            configurations, _ = path.sample_many(step_size)
-            # add all points to end of master list
-            print "2"
-            for i in range(len(configurations)):
-                wpm.append(configurations[i])
-            print configurations
-            print len(configurations)
-            print "3"
-        setx = []
-        sety = []
-        for i in range(len(wpm)):
-            setx.append(wpm[i][0])
-            sety.append(wpm[i][1])
-
-        print "x"
-        print setx
-        print "y"
-        print sety
-
-        plt.plot(setx, sety)
-        plt.grid()
-        plt.show()
 
 
 
