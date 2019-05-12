@@ -211,7 +211,7 @@ if __name__=="__main__":
     finally:
 
         new_list = zip(ex, ey)
-        with open('backtrack2.csv', 'wb+') as csvfile:
+        with open('backtrack.csv', 'wb+') as csvfile:
              filewriter = csv.writer(csvfile)
              filewriter.writerows(new_list)
         print "wrote"

@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/turtlebot3_msgs_generate_messages_py"
-  "/home/reven/me_401/homework_ws/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/_Sound.py"
-  "/home/reven/me_401/homework_ws/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/_SensorState.py"
-  "/home/reven/me_401/homework_ws/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/_VersionInfo.py"
-  "/home/reven/me_401/homework_ws/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/__init__.py"
+  "/home/reven/ME_ROS/Homework1_WS/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/_SensorState.py"
+  "/home/reven/ME_ROS/Homework1_WS/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/_VersionInfo.py"
+  "/home/reven/ME_ROS/Homework1_WS/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/_Sound.py"
+  "/home/reven/ME_ROS/Homework1_WS/devel/lib/python2.7/dist-packages/turtlebot3_msgs/msg/__init__.py"
 )
 
 # Per-language clean rules from dependency scanning.

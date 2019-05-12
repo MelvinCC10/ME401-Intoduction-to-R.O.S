@@ -1,8 +1,8 @@
-prefix=/home/reven/me_401/homework_ws/install
+prefix=/home/reven/ME_ROS/Homework1_WS/install
 
 Name: turtlebot3_msgs
 Description: Description of turtlebot3_msgs
 Version: 1.0.0
-Cflags: -I/home/reven/me_401/homework_ws/install/include
-Libs: -L/home/reven/me_401/homework_ws/install/lib 
+Cflags: -I/home/reven/ME_ROS/Homework1_WS/install/include
+Libs: -L/home/reven/ME_ROS/Homework1_WS/install/lib 
 Requires: std_msgs message_runtime

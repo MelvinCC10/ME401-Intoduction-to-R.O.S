@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/reven/me_401/homework_ws/src
+CMAKE_SOURCE_DIR = /home/reven/ME_ROS/Homework1_WS/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/reven/me_401/homework_ws/build
+CMAKE_BINARY_DIR = /home/reven/ME_ROS/Homework1_WS/build
 
 # Include any dependencies generated for this target.
 include turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/depend.make
@@ -58,17 +58,17 @@ include turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/prog
 include turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/flags.make
 
 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/flags.make
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o: /home/reven/me_401/homework_ws/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/reven/me_401/homework_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o"
-	cd /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o -c /home/reven/me_401/homework_ws/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp
+turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o: /home/reven/ME_ROS/Homework1_WS/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/reven/ME_ROS/Homework1_WS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o"
+	cd /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o -c /home/reven/ME_ROS/Homework1_WS/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp
 
 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.i"
-	cd /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/reven/me_401/homework_ws/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp > CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.i
+	cd /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/reven/ME_ROS/Homework1_WS/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp > CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.i
 
 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.s"
-	cd /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/reven/me_401/homework_ws/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp -o CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.s
+	cd /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/reven/ME_ROS/Homework1_WS/src/turtlebot3/turtlebot3_bringup/src/turtlebot3_diagnostics.cpp -o CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.s
 
 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o.requires:
 
@@ -88,33 +88,33 @@ turtlebot3_diagnostics_OBJECTS = \
 # External object files for target turtlebot3_diagnostics
 turtlebot3_diagnostics_EXTERNAL_OBJECTS =
 
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build.make
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libroscpp.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librosconsole.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librostime.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libcpp_common.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/reven/me_401/homework_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics"
-	cd /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/turtlebot3_diagnostics.dir/link.txt --verbose=$(VERBOSE)
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/src/turtlebot3_diagnostics.cpp.o
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build.make
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libroscpp.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librosconsole.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/librostime.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /opt/ros/kinetic/lib/libcpp_common.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics: turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/reven/ME_ROS/Homework1_WS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics"
+	cd /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/turtlebot3_diagnostics.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build: /home/reven/me_401/homework_ws/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics
+turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build: /home/reven/ME_ROS/Homework1_WS/devel/lib/turtlebot3_bringup/turtlebot3_diagnostics
 
 .PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/build
 
@@ -123,10 +123,10 @@ turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/requires: tu
 .PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/requires
 
 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/clean:
-	cd /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup && $(CMAKE_COMMAND) -P CMakeFiles/turtlebot3_diagnostics.dir/cmake_clean.cmake
+	cd /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup && $(CMAKE_COMMAND) -P CMakeFiles/turtlebot3_diagnostics.dir/cmake_clean.cmake
 .PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/clean
 
 turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/depend:
-	cd /home/reven/me_401/homework_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/reven/me_401/homework_ws/src /home/reven/me_401/homework_ws/src/turtlebot3/turtlebot3_bringup /home/reven/me_401/homework_ws/build /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup /home/reven/me_401/homework_ws/build/turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/reven/ME_ROS/Homework1_WS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/reven/ME_ROS/Homework1_WS/src /home/reven/ME_ROS/Homework1_WS/src/turtlebot3/turtlebot3_bringup /home/reven/ME_ROS/Homework1_WS/build /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup /home/reven/ME_ROS/Homework1_WS/build/turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : turtlebot3/turtlebot3_bringup/CMakeFiles/turtlebot3_diagnostics.dir/depend
 
